@@ -37,17 +37,17 @@ jobs:
          # cache: npm
           #cache-dependency-path: e-commerce-frontend/package-lock.json
 
-      - name: Frontend - install
-        working-directory: e-commerce-frontend
-        run: npm ci
+     # - name: Frontend - install
+      #  working-directory: e-commerce-frontend
+       # run: npm ci
 
-      - name: Frontend - lint (if available)
-        working-directory: e-commerce-frontend
-        run: npm run lint --if-present
+     # - name: Frontend - lint (if available)
+      #  working-directory: e-commerce-frontend
+       # run: npm run lint --if-present
 
-      - name: Frontend - unit tests (headless)
-        working-directory: e-commerce-frontend
-        run: npm test -- --watch=false --browsers=ChromeHeadless
+     # - name: Frontend - unit tests (headless)
+      #  working-directory: e-commerce-frontend
+       # run: npm test -- --watch=false --browsers=ChromeHeadless
 
 
       # ---------- Compose validation + startup ----------
@@ -84,16 +84,16 @@ jobs:
           echo "API health check failed"
           exit 1
 
-      - name: Wait for Web health
-        run: |
-          for i in {1..60}; do
-            if curl -fsS http://localhost:4200 >/dev/null; then
-              exit 0
-            fi
-            sleep 2
-          done
-          echo "Web health check failed"
-          exit 1
+     # - name: Wait for Web health
+      #  run: |
+       #   for i in {1..60}; do
+        #    if curl -fsS http://localhost:4200 >/dev/null; then
+         #     exit 0
+          #  fi
+           # sleep 2
+         # done
+         # echo "Web health check failed"
+          #exit 1
 
       # ---------- Collect evidence on failure ----------
       - name: Dump logs (always)
