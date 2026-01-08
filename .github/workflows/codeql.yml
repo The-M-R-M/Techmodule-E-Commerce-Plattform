@@ -29,7 +29,7 @@ jobs:
             build-mode: manual
 
           - language: javascript-typescript
-            build-mode: manual
+            build-mode: none
 
     steps:
       - uses: actions/checkout@v4
@@ -62,7 +62,7 @@ jobs:
           cache: npm
           cache-dependency-path: e-commerce-frontend/package-lock.json
 
-      - name: Build frontend (none)
+      - name: Build frontend (optional but recommended)
         if: matrix.language == 'javascript-typescript'
         working-directory: e-commerce-frontend
         run: |
