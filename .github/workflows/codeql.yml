@@ -62,7 +62,7 @@ jobs:
           cache: npm
           cache-dependency-path: e-commerce-frontend/package-lock.json
 
-      - name: Build frontend (manual)
+      - name: Build frontend (none)
         if: matrix.language == 'javascript-typescript'
         working-directory: e-commerce-frontend
         run: |
