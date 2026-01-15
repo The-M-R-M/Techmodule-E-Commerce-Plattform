@@ -1,7 +1,7 @@
 ---
 name: User Story
 about: Create a user story / epic for this project
-title: ''
+title: 'User story: '
 labels: user story
 
 ---
