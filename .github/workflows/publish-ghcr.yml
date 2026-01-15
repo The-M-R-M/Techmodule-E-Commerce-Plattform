@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set lower-case owner
+        run: echo "OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -25,7 +28,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Backend image
       - name: Build & push backend
         uses: docker/build-push-action@v6
         with:
@@ -33,10 +35,9 @@ jobs:
           file: ./e-commerce-backend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/techmodule-e-commerce-backend:latest
-            ghcr.io/${{ github.repository_owner }}/techmodule-e-commerce-backend:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/techmodule-e-commerce-backend:latest
+            ghcr.io/${{ env.OWNER_LC }}/techmodule-e-commerce-backend:${{ github.sha }}
 
-      # Frontend image
       - name: Build & push frontend
         uses: docker/build-push-action@v6
         with:
@@ -44,5 +45,5 @@ jobs:
           file: ./e-commerce-frontend/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/techmodule-e-commerce-frontend:latest
-            ghcr.io/${{ github.repository_owner }}/techmodule-e-commerce-frontend:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/techmodule-e-commerce-frontend:latest
+            ghcr.io/${{ env.OWNER_LC }}/techmodule-e-commerce-frontend:${{ github.sha }}
