@@ -2,6 +2,7 @@ name: Publish Docker Images to GHCR
 
 on:
   push:
+    branches: ["main"]
     tags:
       - "v*.*.*"
 
