@@ -84,16 +84,16 @@ jobs:
           echo "API health check failed"
           exit 1
 
-     # - name: Wait for Web health
-      #  run: |
-       #   for i in {1..60}; do
-        #    if curl -fsS http://localhost:4200 >/dev/null; then
-         #     exit 0
-          #  fi
-           # sleep 2
-         # done
-         # echo "Web health check failed"
-          #exit 1
+      - name: Wait for Web health
+        run: |
+          for i in {1..60}; do
+            if curl -fsS http://localhost:4200 >/dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Web health check failed"
+          exit 1
 
       # ---------- Collect evidence on failure ----------
       - name: Dump logs (always)
