@@ -12,4 +12,4 @@ title: 'Technical Story: '
 - [ ] Requirement 3
 
 ### Additional Information
-[Additional links, solutions to consider etc.]
+[Additional links, solutions to consider etc. (optional)]
