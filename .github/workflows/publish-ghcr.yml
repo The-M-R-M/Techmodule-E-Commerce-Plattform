@@ -45,6 +45,8 @@ jobs:
           push: true
           tags: ${{ steps.meta_backend.outputs.tags }}
           labels: ${{ steps.meta_backend.outputs.labels }}
+          provenance: false
+          sbom: false
 
       - name: Docker metadata (frontend)
         id: meta_frontend
@@ -65,3 +67,6 @@ jobs:
           push: true
           tags: ${{ steps.meta_frontend.outputs.tags }}
           labels: ${{ steps.meta_frontend.outputs.labels }}
+          provenance: false
+          sbom: false
+
